@@ -1,33 +1,33 @@
 package Courses.SLL;
 import java.util.Scanner;
-class SLLNode<E> {
+class SLLNode1<E>{
     protected E element;
-    protected SLLNode<E> succ;
-    public SLLNode(E elem, SLLNode<E> succ) {
+    protected SLLNode1<E> succ;
+    public SLLNode1(E elem, SLLNode1<E> succ) {
         this.element = elem;
         this.succ = succ;
     }
 }
-class SLL<E> {
-    private SLLNode<E> first;
-    public SLL() {
+class SLL1<E> extends SLLStarterCode.SLL<E>{
+    private SLLNode1<E> first;
+    public SLL1() {
         this.first = null;
     }
     public void insertLast(E o) {
         if (first == null) {
-            first = new SLLNode<E>(o, null);
+            first = new SLLNode1<E>(o, null);
             return;
         }
-        SLLNode<E> tmp = first;
+        SLLNode1<E> tmp = first;
         while (tmp.succ != null)
             tmp = tmp.succ;
-        tmp.succ = new SLLNode<E>(o, null);
+        tmp.succ = new SLLNode1<E>(o, null);
     }
     public void deleteShorterThan(int L) {
         while (first != null && ((String)first.element).length() < L) {
             first = first.succ;
         }
-        SLLNode<E> curr = first;
+        SLLNode1<E> curr = first;
         while (curr != null && curr.succ != null) {
             if (((String) curr.succ.element).length() < L) {
                 curr.succ = curr.succ.succ;
@@ -40,7 +40,7 @@ class SLL<E> {
         if (first == null)
             return "Prazna lista!!!";
         String ret = "";
-        SLLNode<E> tmp = first;
+        SLLNode1<E> tmp = first;
         ret += tmp.element;
         while (tmp.succ != null) {
             tmp = tmp.succ;
@@ -49,12 +49,12 @@ class SLL<E> {
         return ret;
     }
 }
-public class SLL1{
+public class SingleLinkedList1{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         sc.nextLine();
-        SLL<String> lista = new SLL<>();
+        SLL1<String> lista = new SLL1<>();
         for (int i = 0; i < N; i++) {
             lista.insertLast(sc.nextLine());
         }
